@@ -39,17 +39,19 @@ function sanitizeFile(file:any, cb:any) {
   }
 }
 
-module.exports = {
-  upload: multer({
-    storage: storage,
-    limits: {
-      fileSize: 10000000
-    },
-    fileFilter: function(req:any, file:any, cb:any) {
-      sanitizeFile(file, cb);
-    }
-  }).array("files"),
-  resize: function(path:any, format:any, width:any, height:any) {
+export const upload = () => {
+    multer({
+        storage: storage,
+        limits: {
+          fileSize: 10000000
+        },
+        fileFilter: function(req:any, file:any, cb:any) {
+          sanitizeFile(file, cb);
+        }
+      }).array("files");
+} 
+  
+export const resize = (path:any, format:any, width:any, height:any) => {
     const readStream = fs.createReadStream(path);
     let transform = sharp();
 
@@ -62,5 +64,4 @@ module.exports = {
     }
 
     return readStream.pipe(transform);
-  }
-};
+}

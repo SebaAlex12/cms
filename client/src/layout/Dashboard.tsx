@@ -13,6 +13,7 @@ import InfosMenu from '../store/infos/components/InfosMenu';
 
 /*  main containers */
 import InfosContainer from '../store/infos/components/InfosContainer';
+import ProductsContainer from '../store/products/components/ProductsContainer';
 
 const Dashboard = () => {
     console.log('lunching dashboard');
@@ -37,6 +38,7 @@ const Dashboard = () => {
                         <Routes>
                             <Route path="/infos:id" element={<InfosContainer />} />
                             <Route path="/infos" element={<InfosContainer />} />
+                            <Route path='/products' element={<ProductsContainer />} />
                         </Routes>
                     </RightContainer>
                 </RowContainer>

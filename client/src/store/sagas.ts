@@ -8,12 +8,17 @@ import {
     deleteInfoByIdWatcher
   } from "./infos/saga";
 
+  import {
+    fetchProductsWatcher
+  } from "./products/saga";
+
   export default function* rootSaga() {
     yield all([
         fork(fetchInfosWatcher),
         fork(fetchInfoByIdWatcher),
         fork(updateInfoByIdWatcher),
         fork(insertInfoWatcher),
-        fork(deleteInfoByIdWatcher)
+        fork(deleteInfoByIdWatcher),
+        fork(fetchProductsWatcher),
     ]);
 }

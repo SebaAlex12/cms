@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { getInfos, getInfoById, updateInfoById, insertInfo, deleteInfo } from '../models/infos';
+import { upload, resize } from '../utils/filesManager';
 
 const getInfosController = async (req:Request, res:Response) => {
     try{

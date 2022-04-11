@@ -4,6 +4,7 @@ import cors from 'cors';
 
 /* routes */
 import infosRoutes from "./routes/infos";
+import productsRoutes from './routes/products';
 
 const app: Application = express();
 const port: number | string = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.get('/',(req: Request, res: Response) => {
 });
 
 app.use(infosRoutes);
+app.use(productsRoutes);
 
 const server = http
   .createServer(app)

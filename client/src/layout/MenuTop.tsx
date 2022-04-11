@@ -12,6 +12,11 @@ const MenuTop = () => {
             <Link to='/infos'>
                 <BtnLink>Strony</BtnLink>
             </Link>
+            <Link to='/products'>
+                <BtnLink>
+                    Produkty
+                </BtnLink>
+            </Link>
         </MenuTopBox>
     )
 }
