@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 import { fetchProducts } from '../actions';
 

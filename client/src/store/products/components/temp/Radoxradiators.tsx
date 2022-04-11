@@ -1,11 +1,12 @@
-import react from "react";
+import React, { useRef } from "react";
 import styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
 
 const Radoxradiators = () => {
 
-    const products = useSelector((state:any) => state.products.products);
+    let products = useSelector((state:any) => state.products.products);
+    const multiplier:any = useRef();
 
     // const descList1 = products.map((product:any) => {
     //     return (
@@ -15,23 +16,51 @@ const Radoxradiators = () => {
     //     )
     // });
 
-    console.log('products',products);
+    /* remove some elements to get lighter */
+    products = products.splice(0,5);
 
     const descList2 = products.map((product:any) => {
         return(
             <div>
                 <h1>{product.nazwa}</h1>
-            <textarea name="" id="">
-                {product.opis2}
-            </textarea>
+                <textarea name="" id="">
+                    {product.opis2}
+                </textarea>
             </div>
         )
     });
 
+    const parseTable = (myHtmlString:string) => {
+        // let prices = [];
+        const htmlDom = new DOMParser().parseFromString(myHtmlString, 'text/html');
+        const lastElementsOfTable = htmlDom.querySelectorAll('table tr td:last-child');
+        console.log(htmlDom.body.innerHTML);
+        console.log('selected element', );
+
+        lastElementsOfTable.forEach(element => {
+            console.log(element.innerHTML);
+        });
+
+        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+    }
+
+    const multipleSubmitHandler = () => {
+        console.log('multipleSubmitHandler',multiplier.current.value);
+    }
+
+    /*  replace prices in string  */
+    products.forEach((product:any) => {
+        parseTable(product.opis2);
+    })
+
     return (
         <RadoxradiatorsStytles>
+            <div>Mnożnik cen: 
+                <input type="text" ref={multiplier} />
+                <button onClick={multipleSubmitHandler}>Przelicz</button>
+            </div>
             {/* {descList1} */}
-            {descList2}
+            <div className="products-box">{descList2}</div>
         </RadoxradiatorsStytles>
     )
 }
@@ -39,8 +68,10 @@ const Radoxradiators = () => {
 export default Radoxradiators;
 
 const RadoxradiatorsStytles = styled.div`
-    display:flex;
-    flex-wrap:wrap;
+    .products-box{
+        display:flex;
+        flex-wrap:wrap;
+    }
     textarea{
         width:300px;
         height:500px;
