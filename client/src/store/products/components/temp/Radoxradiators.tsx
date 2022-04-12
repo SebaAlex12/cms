@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
@@ -6,7 +6,9 @@ import { useSelector } from 'react-redux';
 const Radoxradiators = () => {
 
     let products = useSelector((state:any) => state.products.products);
+    const [ range, setRange ] = useState(5);
     const multiplier:any = useRef();
+    const counter:any = useRef();
 
     // const descList1 = products.map((product:any) => {
     //     return (
@@ -15,9 +17,8 @@ const Radoxradiators = () => {
     //         </textarea>
     //     )
     // });
-
     /* remove some elements to get lighter */
-    products = products.splice(0,5);
+    products = products.splice(0,range);
 
     const descList2 = products.map((product:any) => {
         return(
@@ -48,6 +49,11 @@ const Radoxradiators = () => {
         console.log('multipleSubmitHandler',multiplier.current.value);
     }
 
+    const counterSubmitHandler = () => {
+        console.log('counter',counter.current.value);
+        setRange(counter.current.value);
+    }
+
     /*  replace prices in string  */
     products.forEach((product:any) => {
         parseTable(product.opis2);
@@ -55,6 +61,10 @@ const Radoxradiators = () => {
 
     return (
         <RadoxradiatorsStytles>
+            <div>Liczba produktów: 
+                <input type="text" ref={counter} />
+                <button onClick={counterSubmitHandler}>Zmień</button>
+            </div>
             <div>Mnożnik cen: 
                 <input type="text" ref={multiplier} />
                 <button onClick={multipleSubmitHandler}>Przelicz</button>
