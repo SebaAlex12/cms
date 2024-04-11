@@ -1,1 +1,1 @@
-Content Managment System - pierwsze wersjie aplikacji
+Content Managment System - początkowa wersje aplikacji
