@@ -4,7 +4,7 @@ const config:Iconfig = {
     DBhost: "localhost",
     DBuser: "root",
     DBpassword: "",
-    DBname: "radoxradiators.pl"
+    DBname: "demo.pl"
 }
 
 export default config;
