@@ -11,6 +11,9 @@ import MessagesContainer from '../store/messages/components/MessagesContainer';
 /* menus container */
 import InfosMenu from '../store/infos/components/InfosMenu';
 
+/* logim container */
+import UsersLoginForm from '../store/users/components/UsersLoginForm';
+
 /*  main containers */
 import InfosContainer from '../store/infos/components/InfosContainer';
 import ProductsContainer from '../store/products/components/ProductsContainer';
@@ -36,6 +39,7 @@ const Dashboard = () => {
                     </LeftContainer>
                     <RightContainer>
                         <Routes>
+                            <Route path='/' element={<UsersLoginForm />} />
                             <Route path="/infos:id" element={<InfosContainer />} />
                             <Route path="/infos" element={<InfosContainer />} />
                             <Route path='/products' element={<ProductsContainer />} />

@@ -18,6 +18,8 @@ import TinymceFieldGroup from '../../../common/forms/TinymceFieldGroup';
 
 import { Form, Button } from '../../../styles/basic';
 
+import { Iinfo } from '../interfaces';
+
 const InfosAddForm = () => {
     const dispatch = useDispatch();
     const schema = [
@@ -38,7 +40,7 @@ const InfosAddForm = () => {
     },[data]);
 
     const onChangeHandler = (event:any) => {
-        setInfo({...info,[event.target.name]:event.target.value});
+        setInfo((prevInfo:Iinfo) => { return {...prevInfo,[event.target.name]:event.target.value}});
     };
     const onChangeIntroEditorHandler = (event:any) => {
         // setInfo({...info,naglowek:event.target.getContent()})
