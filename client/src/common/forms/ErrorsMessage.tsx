@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const ErrorsMessage = (errors:any) => {
-     const errorsContent = errors ? Object.values(errors.errors).map((error:any) => <span>{ error }</span>) : '';
+    console.log('errors',errors);
+     const errorsContent = errors ? Object.values(errors.errors).map((error:any,index:number) => <span key={index}>{ error }</span>) : '';
     return (
         <ErrorsMessageBox>
             { errorsContent }
